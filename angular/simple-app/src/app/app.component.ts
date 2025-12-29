@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'simple-app';
+
+  selectComponent(selection: HTMLInputElement): void {
+    selection.value = 'component';
+  }
 }
