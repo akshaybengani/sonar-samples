@@ -604,7 +604,7 @@ intellisense.annotate(_object, {
     /// <summary>Determine the current state of a Deferred object.</summary>
     /// <returns type="String" />
   },
-  'then': function() {
+  'execute': function() {
     /// <signature>
     ///   <summary>Add handlers to be called when the Deferred object is resolved, rejected, or still in progress.</summary>
     ///   <param name="doneFilter" type="Function">A function that is called when the Deferred is resolved.</param>
