@@ -32,4 +32,32 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('.content span').textContent).toContain('simple-app app is running!');
   });
+
+  it('should set selection value to "component" when selectComponent is called', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    fixture.detectChanges(); // To initialize @ViewChild
+    app.selectComponent();
+    expect(app.selection.nativeElement.value).toBe('component');
+  });
+
+  it('should call selectComponent on enter keydown', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    spyOn(app, 'selectComponent');
+    const div = fixture.debugElement.nativeElement.querySelector('div[tabindex="0"]');
+    div.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    fixture.detectChanges();
+    expect(app.selectComponent).toHaveBeenCalled();
+  });
+
+  it('should call selectComponent on space keydown', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    spyOn(app, 'selectComponent');
+    const div = fixture.debugElement.nativeElement.querySelector('div[tabindex="0"]');
+    div.dispatchEvent(new KeyboardEvent('keydown', { key: ' ' }));
+    fixture.detectChanges();
+    expect(app.selectComponent).toHaveBeenCalled();
+  });
 });
