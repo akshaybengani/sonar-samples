@@ -860,7 +860,8 @@ function createCache() {
 			// Only keep the most recent entries
 			delete cache[ keys.shift() ];
 		}
-		return (cache[ key + " " ] = value);
+		cache[ key + " " ] = value;
+		return value;
 	}
 	return cache;
 }
